@@ -1,0 +1,38 @@
+{
+  "title": "A084030 — corollaries of A084029 incl. unique zero witness (Lean 4)",
+  "description": "theorem A084030: n <= (witnesses n).card for n >= 3 (restatement of A084029); theorem A084030_zero_unique: (witnesses 2).card = 1 - a(2)=0 with unique witness 20, certified by native_decide. Corollary package of A084029.",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Gaudin, Frederic"
+    }
+  ],
+  "license": {
+    "id": "Apache-2.0"
+  },
+  "keywords": [
+    "OEIS",
+    "digit sum",
+    "Lean 4",
+    "mathlib",
+    "formal proof",
+    "theorem prover",
+    "A084030",
+    "corollary",
+    "zero witness"
+  ],
+  "version": "1.0.0",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23879088",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    }
+  ],
+  "custom": {
+    "code:theoremStatus": "corollary",
+    "code:leanToolchain": "leanprover/lean4:v4.35.0",
+    "code:mathlibVersion": "v4.35.0"
+  }
+}
