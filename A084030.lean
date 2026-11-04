@@ -54,9 +54,13 @@ theorem A084030 (n : ℕ) (hn : 3 ≤ n) : n ≤ (witnesses n).card :=
 open A084030 in
 /-- Unicité du zéro : a(2) = 0 — seul 20 est témoin de la ligne 2. -/
 theorem A084030_zero_unique : (witnesses 2).card = 1 := by
-  native_decide
+  decide
 
 open A084030 in
 /-- Ligne 1 pleine : a(1) = 1 (le seul témoin est 1). -/
 theorem A084030_one : (witnesses 1).card = 1 := by
-  native_decide
+  decide
+
+#print axioms A084030
+#print axioms A084030_zero_unique
+#print axioms A084030_one

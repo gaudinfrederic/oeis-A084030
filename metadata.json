@@ -1,37 +1,62 @@
 {
-  "title": "A084030 — corollaries of A084029 incl. unique zero witness (Lean 4)",
-  "description": "theorem A084030: n <= (witnesses n).card for n >= 3 (restatement of A084029); theorem A084030_zero_unique: (witnesses 2).card = 1 - a(2)=0 with unique witness 20, certified by native_decide. Corollary package of A084029.",
+  "title": "Machine-checked proof of the unique-zero conjecture (OEIS A084030)",
+  "description": "theorem A084030: for every n >= 3 the witness set of row n of triangle A084029 has at least n elements — the row is full, so the diagonal term a(n) is nonzero; theorems A084030_zero_unique (a(2)=0 is the unique zero) and A084030_one (a(1)=1). Together they prove the conjecture recorded as an unsigned comment on OEIS A084029 and A084030 (entries by Amarnath Murthy, May 24 2003; extended by David Wasserman, Dec 09 2004): 'Only one term is zero.' Companion corollary theorem A084033: for n >= 3 the quotient row T(n,k)=A084029(n,k)/n has >= n integer terms, all nonzero. To our knowledge as of 2026-11-04, first written proof and first machine-checked formalization (corpus and date evidenced in VERIFICATIONS/anteriorite.md). Certification: Lean 4 + mathlib v4.35.0, pinned manifest. A084030_zero_unique and A084030_one are kernel-pure (decide); A084030 and A084033 depend on the three standard axioms plus one disclosed native_decide certificate (the 128-row witness table table029_ok_all — reduction kernel-verified, finite case check via native evaluation). Record-level Apache-2.0 applies to original material only; OEIS verbatim content and %N/%C quotations are redistributed under CC-BY-SA-4.0 (see NOTICE.txt).",
   "upload_type": "software",
   "creators": [
     {
-      "name": "Gaudin, Frederic"
+      "name": "Gaudin, Frederic",
+      "affiliation": "Université de Caen Normandie"
     }
   ],
   "license": {
     "id": "Apache-2.0"
   },
   "keywords": [
-    "OEIS",
+    "OEIS A084030",
+    "A084029",
+    "A084033",
+    "unique zero",
     "digit sum",
+    "triangle",
     "Lean 4",
-    "mathlib",
-    "formal proof",
-    "theorem prover",
-    "A084030",
-    "corollary",
-    "zero witness"
+    "Mathlib",
+    "formal proof"
   ],
   "version": "1.0.0",
   "related_identifiers": [
     {
+      "identifier": "https://oeis.org/A084030",
+      "relation": "documents",
+      "resource_type": "other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://oeis.org/A084029",
+      "relation": "documents",
+      "resource_type": "other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://oeis.org/A084033",
+      "relation": "documents",
+      "resource_type": "other",
+      "scheme": "url"
+    },
+    {
       "identifier": "10.5281/zenodo.23879088",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23957596",
       "relation": "references",
       "resource_type": "publication-article",
       "scheme": "doi"
     }
   ],
   "custom": {
-    "code:theoremStatus": "corollary",
+    "code:theoremStatus": "theorem-unconditional",
     "code:leanToolchain": "leanprover/lean4:v4.35.0",
     "code:mathlibVersion": "v4.35.0"
   }

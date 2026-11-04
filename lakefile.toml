@@ -1,6 +1,6 @@
 name = "a084030"
 version = "0.1.0"
-defaultTargets = ["A084030"]
+defaultTargets = ["A084030", "A084033"]
 
 [[require]]
 name = "mathlib"
@@ -22,3 +22,6 @@ name = "A084029"
 
 [[lean_lib]]
 name = "A084030"
+
+[[lean_lib]]
+name = "A084033"
