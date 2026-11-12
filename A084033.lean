@@ -1,5 +1,8 @@
 import A084030
 
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+
 /-! # A084033 — corollaire d'A084029 (triangle des quotients)
 
 Texte OEIS verbatim : « Triangle read by rows:

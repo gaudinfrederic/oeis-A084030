@@ -1,6 +1,6 @@
 name = "a084030"
 version = "0.1.0"
-defaultTargets = ["A084030", "A084033"]
+defaultTargets = ["A084030", "A084030Val", "A084033"]
 
 [[require]]
 name = "mathlib"
@@ -12,16 +12,40 @@ rev = "v4.35.0"
 name = "CornerTable"
 
 [[lean_lib]]
+name = "A077754Cert"
+
+[[lean_lib]]
 name = "A077754"
 
 [[lean_lib]]
-name = "A077754Cert"
+name = "A084029Table"
+
+[[lean_lib]]
+name = "Scratch029_cert_lo"
+
+[[lean_lib]]
+name = "Scratch029_cert_hi1"
+
+[[lean_lib]]
+name = "Scratch029_cert_hi2a"
+
+[[lean_lib]]
+name = "Scratch029_cert_hi2b"
+
+[[lean_lib]]
+name = "Scratch029_cert_hi2c"
+
+[[lean_lib]]
+name = "Scratch029_cert_hi2d"
 
 [[lean_lib]]
 name = "A084029"
 
 [[lean_lib]]
 name = "A084030"
+
+[[lean_lib]]
+name = "A084030Val"
 
 [[lean_lib]]
 name = "A084033"

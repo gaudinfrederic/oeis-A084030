@@ -5,3 +5,4 @@
 *.ilean
 *.c
 /build
+/.git-pub

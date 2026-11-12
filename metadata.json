@@ -1,63 +1,71 @@
 {
-  "title": "Machine-checked proof of the unique-zero conjecture (OEIS A084030)",
-  "description": "theorem A084030: for every n >= 3 the witness set of row n of triangle A084029 has at least n elements — the row is full, so the diagonal term a(n) is nonzero; theorems A084030_zero_unique (a(2)=0 is the unique zero) and A084030_one (a(1)=1). Together they prove the conjecture recorded as an unsigned comment on OEIS A084029 and A084030 (entries by Amarnath Murthy, May 24 2003; extended by David Wasserman, Dec 09 2004): 'Only one term is zero.' Companion corollary theorem A084033: for n >= 3 the quotient row T(n,k)=A084029(n,k)/n has >= n integer terms, all nonzero. To our knowledge as of 2026-11-04, first written proof and first machine-checked formalization (corpus and date evidenced in VERIFICATIONS/anteriorite.md). Certification: Lean 4 + mathlib v4.35.0, pinned manifest. A084030_zero_unique and A084030_one are kernel-pure (decide); A084030 and A084033 depend on the three standard axioms plus one disclosed native_decide certificate (the 128-row witness table table029_ok_all — reduction kernel-verified, finite case check via native evaluation). Record-level Apache-2.0 applies to original material only; OEIS verbatim content and %N/%C quotations are redistributed under CC-BY-SA-4.0 (see NOTICE.txt).",
-  "upload_type": "software",
-  "creators": [
-    {
-      "name": "Gaudin, Frederic",
-      "affiliation": "Université de Caen Normandie"
-    }
-  ],
-  "license": {
-    "id": "Apache-2.0"
-  },
-  "keywords": [
-    "OEIS A084030",
-    "A084029",
-    "A084033",
-    "unique zero",
-    "digit sum",
-    "triangle",
-    "Lean 4",
-    "Mathlib",
-    "formal proof"
-  ],
-  "version": "1.0.0",
-  "related_identifiers": [
-    {
-      "identifier": "https://oeis.org/A084030",
-      "relation": "documents",
-      "resource_type": "other",
-      "scheme": "url"
-    },
-    {
-      "identifier": "https://oeis.org/A084029",
-      "relation": "documents",
-      "resource_type": "other",
-      "scheme": "url"
-    },
-    {
-      "identifier": "https://oeis.org/A084033",
-      "relation": "documents",
-      "resource_type": "other",
-      "scheme": "url"
-    },
-    {
-      "identifier": "10.5281/zenodo.23879088",
-      "relation": "references",
-      "resource_type": "publication-article",
-      "scheme": "doi"
-    },
-    {
-      "identifier": "10.5281/zenodo.23957596",
-      "relation": "references",
-      "resource_type": "publication-article",
-      "scheme": "doi"
-    }
-  ],
-  "custom": {
-    "code:theoremStatus": "theorem-unconditional",
-    "code:leanToolchain": "leanprover/lean4:v4.35.0",
-    "code:mathlibVersion": "v4.35.0"
-  }
+ "title": "Machine-checked proof of the unique-zero conjecture (OEIS A084030)",
+ "description": "<p>Machine-checked proof of the conjecture recorded on OEIS A084029 and A084030. Canonical statements (verbatim): A084029 %N - \"Triangle read by rows: n-th row contains the first n n-digit multiples of n with digit sum n. If there are fewer than n such numbers, the rest of the row is filled with 0's.\" A084030 %N - \"Main diagonal of triangle A084029.\" Both entries (Amarnath Murthy, May 24 2003; extended by David Wasserman, Dec 09 2004) carry the same UNSIGNED comment: \"Conjecture: Only one term is zero.\"</p><p>NEW IN v6: the diagonal term itself is now a formalized object. Module A084030Val defines a084030_val n = sInf(Tdiag n), the n-th smallest witness of row n (sInf of the empty set is 0, matching exactly the OEIS zero-padding convention), and theorem a084030_val_zero_iff proves a(n) = 0 iff n = 2 for every n >= 1 - the conjecture carried on the object itself, not only on row cardinalities. Sixteen kernel-certified anchors prove the listed values a(1)=1, a(2)=0, a(3)=120, a(4)=2020, a(5)=10400, a(6)=100140, a(7)=1001203, a(8)=10001312, a(9)=100000080, a(10)=1000000900, a(11)=10000010108, a(12)=100000000524, a(13)=1000000002235, a(14)=10000000002650, a(15)=100000000000950, a(16)=1000000000003408, each with the complete list of smaller witnesses decided inside the kernel. TRUST BASE REDUCED: the previously disclosed native_decide certificate on the 128-row witness table is gone - table029_ok_all is now proved by decide +kernel certificates split per sub-range (modules Scratch029_cert_*); every exported theorem prints axioms = [propext, Classical.choice, Quot.sound].</p><p>theorem A084030 proves, for every n >= 3, that the witness set of row n has at least n elements - the row is full, no zero-padding, so the diagonal term is nonzero (a084030_val_pos). theorem A084030_zero_unique certifies (witnesses 2).card = 1 - the singleton {20} - giving the unique zero a(2) = 0; theorem A084030_one gives a(1) = 1. A companion corollary theorem A084033 covers the quotient triangle T(n,k) = A084029(n,k)/n (no conjecture on that entry): for n >= 3 every quotient row has >= n integer terms, all nonzero. The heavy lifting is the A084029 row-existence theorem (two-block construction for n >= 131, certified witness table for 3 <= n <= 130), itself built on the published A077754 Murthy engine.</p><p>Prior art: none found - to our knowledge as of 2026-11-04 this is the first written proof and first machine-checked formalization (search corpus and date evidenced in VERIFICATIONS/anteriorite.md).</p><p>Certification: Lean 4 + mathlib v4.35.0 (pinned lean-toolchain + lakefile.toml + lake-manifest.json inside lean-artifact/, fourteen modules). Rebuild from the archive on a clean machine (elan + network required): <code>cd lean-artifact && lake exe cache get && lake build</code> - exits 0 with zero sorry and zero admit. Axiom bases (#print axioms, VERIFICATIONS/axioms.txt): every exported theorem carries the three standard axioms only - no native_decide, no ofReduceBool, no sorryAx anywhere in the delivered chain. Fidelity of the formalized statements to the raw OEIS text was audited blind by an external oracle (verdict VRAI); the hardened object-level audit (VERIFICATIONS/D2PLUS/, adversarial referee verdict SOLIDE) confirmed a084030_val is exactly the OEIS diagonal term; the exchanges are archived under VERIFICATIONS/.</p><p>Contents: the note in Markdown/TeX/PDF, lean-artifact/ (14 modules + pinned build files), VERIFICATIONS/ (OEIS snapshots, oracle audits, anteriority audit, D2PLUS/ hardening audit, MANIFEST.sha256, rebuild log), ANNONCES.md, metadata.json, NOTICE.txt. License scope: the record-level Apache-2.0 license field and grant cover only the original material; OEIS content in this record - the VERIFICATIONS/ snapshots and the short %N/%C quotations in the paper, THEOREMS.md and this description - is OEIS material redistributed under CC-BY-SA-4.0 (https://creativecommons.org/licenses/by-sa/4.0/, clause 2 of the OEIS End-User License Agreement, clause-3 attribution given, unmodified) - see NOTICE.txt.</p>",
+ "upload_type": "software",
+ "publication_date": "2026-11-12",
+ "access_right": "open",
+ "creators": [
+ {
+  "name": "Gaudin, Frederic",
+  "affiliation": "Université de Caen Normandie"
+ }
+ ],
+ "license": {
+  "id": "apache2.0"
+ },
+ "keywords": [
+  "OEIS A084030",
+  "A084029",
+  "A084033",
+  "unique zero",
+  "digit sum",
+  "triangle",
+  "Lean 4",
+  "Mathlib",
+  "formal proof"
+ ],
+ "version": "v6",
+ "related_identifiers": [
+ {
+  "identifier": "https://oeis.org/A084030",
+  "relation": "documents",
+  "resource_type": "other",
+  "scheme": "url"
+ },
+ {
+  "identifier": "https://oeis.org/A084029",
+  "relation": "documents",
+  "resource_type": "other",
+  "scheme": "url"
+ },
+ {
+  "identifier": "https://oeis.org/A084033",
+  "relation": "documents",
+  "resource_type": "other",
+  "scheme": "url"
+ },
+ {
+  "identifier": "10.5281/zenodo.23879088",
+  "relation": "references",
+  "resource_type": "publication-article",
+  "scheme": "doi"
+ },
+ {
+  "identifier": "10.5281/zenodo.23957596",
+  "relation": "references",
+  "resource_type": "publication-article",
+  "scheme": "doi"
+ },
+ {
+  "identifier": "https://github.com/gaudinfrederic/oeis-A084030",
+  "relation": "isSupplementedBy",
+  "resource_type": "software",
+  "scheme": "url"
+ }
+ ],
+ "custom": {
+  "code:theoremStatus": "theorem-unconditional",
+  "code:leanToolchain": "leanprover/lean4:v4.35.0",
+  "code:mathlibVersion": "v4.35.0"
+ }
 }

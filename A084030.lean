@@ -1,5 +1,8 @@
 import A084029
 
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+
 /-! # A084030 — corollaire d'A084029
 
 Texte OEIS verbatim : « Main diagonal of triangle A084029. »

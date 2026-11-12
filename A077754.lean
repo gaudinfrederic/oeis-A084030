@@ -2,6 +2,9 @@ import Mathlib
 import CornerTable
 import A077754Cert
 
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+
 open scoped Pointwise
 
 /- A077754 / Murthy — formalisation en cours.
